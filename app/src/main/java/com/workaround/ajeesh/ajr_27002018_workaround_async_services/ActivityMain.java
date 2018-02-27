@@ -1,5 +1,6 @@
 package com.workaround.ajeesh.ajr_27002018_workaround_async_services;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -54,12 +55,31 @@ public class ActivityMain extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        boolean handled = true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.menuDoWork: {
+                generateActivityOnClassType(ActivityDoWork.class);
+                break;
+            }
+            case R.id.menuExit: {
+                onClickExit(item);
+                break;
+            }
+            default: {
+                handled = super.onOptionsItemSelected(item);
+            }
         }
+        return handled;
+    }
 
-        return super.onOptionsItemSelected(item);
+    private void generateActivityOnClassType(Class<?> activityClass) {
+        LogHelper.LogThreadId(logName, "Activity generated for :" + activityClass);
+        Intent intent = new Intent(this, activityClass);
+        startActivity(intent);
+    }
+
+    private void onClickExit(MenuItem item) {
+        finish();
     }
 }
