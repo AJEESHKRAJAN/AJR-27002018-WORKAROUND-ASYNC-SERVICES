@@ -9,9 +9,12 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/asyncProgMainTextView"
+        android:layout_width="342dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/maintext"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

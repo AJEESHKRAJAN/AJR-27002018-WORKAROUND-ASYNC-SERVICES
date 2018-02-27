@@ -8,8 +8,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.LogHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class ActivityMain extends AppCompatActivity {
+    String logName = "ASYNC-MAIN-ACT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +24,12 @@ public class ActivityMain extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        LogHelper.LogThreadId(logName, "Main Activity is created.");
+        String createdTime =
+                (new SimpleDateFormat("HH:mm:ss", Locale.US)).format(System.currentTimeMillis());
+
+        TextView masterPageTextView = findViewById(R.id.asyncProgMainTextView);
+        masterPageTextView.append("Activity Created time: " + createdTime);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
