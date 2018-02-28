@@ -5,4 +5,6 @@
     <string name="dowork">Do Work</string>
     <string name="exit">Exit</string>
     <string name="this_is_a_textview">This is a TextView</string>
+    <string name="do_work_async">Do Work - Async</string>
+    <string name="do_work_simple_service">Do Work - Simple Service</string>
 </resources>

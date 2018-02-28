@@ -73,6 +73,7 @@ public class WorkerHelper {
         try {
             Geocoder geocoder = new Geocoder(_context);
             List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            //addressDescription = reverseGeoCodeWithWebService(location);
             LogHelper.LogThreadId(logName, "Address List found count. " + addressList.size());
             if (!addressList.isEmpty()) {
                 Address firstAddress = addressList.get(0);
@@ -170,7 +171,7 @@ public class WorkerHelper {
             InputStream stream = entity.getContent();
             InputStreamReader reader = new InputStreamReader(stream);
 
-            LogHelper.LogThreadId(logName, "content : " + entity.getContent());
+            LogHelper.LogThreadId(logName, "content : " + stream);
 
             // Use the XML Parse to locate the formatted address in the response
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
@@ -196,7 +197,7 @@ public class WorkerHelper {
                 eventType = xpp.next();
             }
         } catch (Exception ex) {
-            // Log.e("Worker.reverseGeoCodeWithWebService", ex.getMessage());
+            LogHelper.LogThreadId(logName, "Worker.reverseGeoCodeWithWebService : Exception : " + ex.getMessage());
         }
         LogHelper.LogThreadId(logName, "Service Address Description : " + addressDescription);
         return addressDescription;

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.workaround.ajeesh.ajr_27002018_workaround_async_services.ActivityMain">
+    <item
+        android:id="@+id/menuDoWork"
+        android:title="@string/dowork" />
+    <item
+        android:id="@+id/menuDoWorkAsynchronously"
+        android:title="@string/do_work_async" />
+    <item
+        android:id="@+id/menuDoWorkSimpleService"
+        android:title="@string/do_work_simple_service" />
+</menu>

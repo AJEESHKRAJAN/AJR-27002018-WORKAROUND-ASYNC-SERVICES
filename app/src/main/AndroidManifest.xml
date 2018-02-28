@@ -3,11 +3,10 @@
     package="com.workaround.ajeesh.ajr_27002018_workaround_async_services">
 
     <uses-feature android:name="android.hardware.location.gps" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-
 
     <application
         android:allowBackup="true"
@@ -26,7 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityDoWork"></activity>
+        <activity android:name=".ActivityDoWork" />
+
+        <service
+            android:name=".Helpers.SimpleService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.workaround.async.services.intent.action.SIMPLE_SERVICE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
