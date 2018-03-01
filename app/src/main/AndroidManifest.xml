@@ -34,6 +34,22 @@
                 <action android:name="com.workaround.async.services.intent.action.SIMPLE_SERVICE" />
             </intent-filter>
         </service>
+        <service
+            android:name=".Helpers.ExtendedLifeCycleService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.workaround.async.services.intent.action.EXTENSION_SERVICE_LC" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Helpers.ExtendedLifeCycleThreadService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Helpers.ExtendedLifeCycleStopMechanismService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

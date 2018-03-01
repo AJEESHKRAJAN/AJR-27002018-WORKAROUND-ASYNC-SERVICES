@@ -7,4 +7,7 @@
     <string name="this_is_a_textview">This is a TextView</string>
     <string name="do_work_async">Do Work - Async</string>
     <string name="do_work_simple_service">Do Work - Simple Service</string>
+    <string name="ext_lc_svc">Do Work - Extended Life Cycle Service</string>
+    <string name="do_work_extended_life_cycle_thread_service">Do Work - Extended Life Cycle Thread Service</string>
+    <string name="stopmechanism">Do Work - Extended LC Stop Mechanism</string>
 </resources>

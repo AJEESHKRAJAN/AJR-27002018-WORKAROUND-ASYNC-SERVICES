@@ -11,4 +11,13 @@
     <item
         android:id="@+id/menuDoWorkSimpleService"
         android:title="@string/do_work_simple_service" />
+    <item
+        android:id="@+id/menuDoWorkExtendedLifeCycleService"
+        android:title="@string/ext_lc_svc" />
+    <item
+        android:id="@+id/menuDoWorkExtendedLifeCycleThreadService"
+        android:title="@string/do_work_extended_life_cycle_thread_service" />
+    <item
+        android:id="@+id/menuDoWorkExtendedLifeCycleThreadStopMechanismService"
+        android:title="@string/stopmechanism" />
 </menu>

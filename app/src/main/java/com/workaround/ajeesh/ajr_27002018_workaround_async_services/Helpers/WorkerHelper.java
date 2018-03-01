@@ -5,8 +5,11 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.os.Environment;
+import android.os.HandlerThread;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -41,11 +44,43 @@ public class WorkerHelper {
     private final boolean _useGpsToGetLocation = false;
     String logName = "ASYNC-HLPR-WORKER";
 
+    HandlerThread _gpsHandlerThread;
+    LocationManager _locationManager;
+    LocationListener _locationListener;
+
     Context _context;
 
     public WorkerHelper(Context context) {
         _context = context;
     }
+
+
+    @SuppressLint("MissingPermission")
+    public void MonitorGpsInBackground() {
+        if (_useGpsToGetLocation) {
+            // Create a thread to handle the GPS events
+            _gpsHandlerThread = new HandlerThread("GPSThread");
+            _gpsHandlerThread.start();
+
+            // Create a listener for the updates
+            _locationListener = new NoOpLocationListener();
+
+            // Get a reference to the location manager
+            _locationManager = (LocationManager) _context.getSystemService(Context.LOCATION_SERVICE);
+
+            // Start GPS monitoring
+            _locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, _locationListener, _gpsHandlerThread.getLooper());
+        }
+    }
+
+    public void stopGpsMonitoring() {
+        if (_locationManager != null)
+            _locationManager.removeUpdates(_locationListener);
+
+        if (_gpsHandlerThread != null)
+            _gpsHandlerThread.quit();
+    }
+
 
     // Retrieve the most recent location available
     @SuppressLint("MissingPermission")
@@ -215,6 +250,21 @@ public class WorkerHelper {
             Thread.sleep(3000);
         } catch (Exception ex) {
             // Only likely exception is an InterruptedException which we can ignore
+        }
+    }
+
+    class NoOpLocationListener implements LocationListener {
+
+        public void onLocationChanged(Location location) {
+        }
+
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+        }
+
+        public void onProviderEnabled(String s) {
+        }
+
+        public void onProviderDisabled(String s) {
         }
     }
 }

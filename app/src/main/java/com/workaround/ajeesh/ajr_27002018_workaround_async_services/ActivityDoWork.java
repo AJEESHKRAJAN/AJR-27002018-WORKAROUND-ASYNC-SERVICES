@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.AsyncWorkerHelper;
+import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.ExtendedLifeCycleService;
+import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.ExtendedLifeCycleStopMechanismService;
+import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.ExtendedLifeCycleThreadService;
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.LogHelper;
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.SimpleService;
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.WorkerHelper;
@@ -59,6 +62,18 @@ public class ActivityDoWork extends AppCompatActivity {
             }
             case R.id.menuDoWorkSimpleService: {
                 doWorkSimpleService();
+                break;
+            }
+            case R.id.menuDoWorkExtendedLifeCycleService: {
+                doWorkExtendedLifeCycleService();
+                break;
+            }
+            case R.id.menuDoWorkExtendedLifeCycleThreadService: {
+                doWorkExtendedLifeCycleThreadService();
+                break;
+            }
+            case R.id.menuDoWorkExtendedLifeCycleThreadStopMechanismService: {
+                doWorkExtendedLifeCycleThreadStopMechanismService();
                 break;
             }
             default: {
@@ -115,13 +130,38 @@ public class ActivityDoWork extends AppCompatActivity {
         LogHelper.LogThreadId(logName, "Do work - Simple method to start a service is called off.");
 
         Intent theIntent = new Intent(this, SimpleService.class);
-        theIntent.putExtra("fileName","ResponsiveUx.out");
+        theIntent.putExtra("fileName", "ResponsiveUx.out");
         startService(theIntent);
 
         Toast theToast;
         theToast = Toast.makeText(this, "Service Started From activity", Toast.LENGTH_LONG);
         theToast.show();
+    }
 
+
+    private void doWorkExtendedLifeCycleService() {
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle service is called off.");
+        Intent theExtendedLifeCycleService = new Intent(this, ExtendedLifeCycleService.class);
+        theExtendedLifeCycleService.putExtra("fileName", "ResponsiveUx.out");
+        startService(theExtendedLifeCycleService);
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle service calling completed.");
+    }
+
+    private void doWorkExtendedLifeCycleThreadService() {
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded service is called off.");
+        Intent theExtendedLifeCycleThreadService = new Intent(this, ExtendedLifeCycleThreadService.class);
+        theExtendedLifeCycleThreadService.putExtra("fileName", "ResponsiveUx.out");
+        startService(theExtendedLifeCycleThreadService);
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded service is calling completed.");
+    }
+
+
+    private void doWorkExtendedLifeCycleThreadStopMechanismService() {
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded Stop Mechanism service is called off.");
+        Intent theExtendedLifeCycleThreadService = new Intent(this, ExtendedLifeCycleStopMechanismService.class);
+        theExtendedLifeCycleThreadService.putExtra("fileName", "ResponsiveUx.out");
+        startService(theExtendedLifeCycleThreadService);
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded top Mechanism service is calling completed.");
     }
 
 }
