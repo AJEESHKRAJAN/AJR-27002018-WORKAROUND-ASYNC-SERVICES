@@ -10,4 +10,5 @@
     <string name="ext_lc_svc">Do Work - Extended Life Cycle Service</string>
     <string name="do_work_extended_life_cycle_thread_service">Do Work - Extended Life Cycle Thread Service</string>
     <string name="stopmechanism">Do Work - Extended LC Stop Mechanism</string>
+    <string name="do_work_extended_lc_fore_grd_service">Do Work - Extended LC Fore-GRD Service</string>
 </resources>

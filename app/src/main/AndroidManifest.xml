@@ -49,6 +49,10 @@
         <service
             android:name=".Helpers.ExtendedLifeCycleStopMechanismService"
             android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Helpers.ExtendedLifeCycleStopMechanismForeGroundService"
+            android:enabled="true"
             android:exported="true"></service>
     </application>
 

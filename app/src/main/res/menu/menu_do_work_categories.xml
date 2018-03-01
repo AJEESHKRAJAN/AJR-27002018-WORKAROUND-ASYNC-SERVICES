@@ -20,4 +20,7 @@
     <item
         android:id="@+id/menuDoWorkExtendedLifeCycleThreadStopMechanismService"
         android:title="@string/stopmechanism" />
+    <item
+        android:id="@+id/menuDoWorkExtendedLifeCycleStopMechanismForeGroundService"
+        android:title="@string/do_work_extended_lc_fore_grd_service" />
 </menu>

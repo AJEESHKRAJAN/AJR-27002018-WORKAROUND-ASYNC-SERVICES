@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.AsyncWorkerHelper;
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.ExtendedLifeCycleService;
+import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.ExtendedLifeCycleStopMechanismForeGroundService;
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.ExtendedLifeCycleStopMechanismService;
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.ExtendedLifeCycleThreadService;
 import com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers.LogHelper;
@@ -74,6 +75,10 @@ public class ActivityDoWork extends AppCompatActivity {
             }
             case R.id.menuDoWorkExtendedLifeCycleThreadStopMechanismService: {
                 doWorkExtendedLifeCycleThreadStopMechanismService();
+                break;
+            }
+            case R.id.menuDoWorkExtendedLifeCycleStopMechanismForeGroundService: {
+                doWorkExtendedLifeCycleStopMechanismForeGroundService();
                 break;
             }
             default: {
@@ -161,7 +166,14 @@ public class ActivityDoWork extends AppCompatActivity {
         Intent theExtendedLifeCycleThreadService = new Intent(this, ExtendedLifeCycleStopMechanismService.class);
         theExtendedLifeCycleThreadService.putExtra("fileName", "ResponsiveUx.out");
         startService(theExtendedLifeCycleThreadService);
-        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded top Mechanism service is calling completed.");
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded Stop Mechanism service is calling completed.");
     }
 
+    private void doWorkExtendedLifeCycleStopMechanismForeGroundService() {
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded Stop Mechanism Foreground service is called off.");
+        Intent theExtendedLifeCycleThreadService = new Intent(this, ExtendedLifeCycleStopMechanismForeGroundService.class);
+        theExtendedLifeCycleThreadService.putExtra("fileName", "ResponsiveUx.out");
+        startService(theExtendedLifeCycleThreadService);
+        LogHelper.LogThreadId(logName, "Do work - Extended Life Cycle Threaded Stop Mechanism Foreground service is calling completed.");
+    }
 }

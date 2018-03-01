@@ -3,7 +3,10 @@ package com.workaround.ajeesh.ajr_27002018_workaround_async_services.Helpers;
 import android.app.Service;
 import android.content.Intent;
 import android.location.Location;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
+import android.widget.Toast;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -16,6 +19,8 @@ public class ExtendedLifeCycleStopMechanismService extends Service {
     WorkerHelper worker;
     ExecutorService executorService;
     ScheduledExecutorService scheduledExecutorService;
+
+    String statusMessage;
 
     public ExtendedLifeCycleStopMechanismService() {
         LogHelper.LogThreadId(logName, "ExtendedLifeCycleStopMechanismService Service - initiated.");
@@ -55,6 +60,7 @@ public class ExtendedLifeCycleStopMechanismService extends Service {
     class ServiceRunnable implements Runnable {
         ExtendedLifeCycleStopMechanismService extendedLifeCycleStopMechanismService;
         int _startId;
+        Handler handler;
 
         public ServiceRunnable(ExtendedLifeCycleStopMechanismService theService, int startId) {
             extendedLifeCycleStopMechanismService = theService;
@@ -63,16 +69,20 @@ public class ExtendedLifeCycleStopMechanismService extends Service {
 
         @Override
         public void run() {
+            setUpHandler();
             LogHelper.LogThreadId(logName, "ExtendedLifeCycleStopMechanismService Service - ServiceRunnable Class : Started");
             // Get most recently available location as a latitude/longitude
             Location location = worker.getLocation();
+            updateStatus("Starting");
 
             // Convert lat/lng to a human-readable address
             String address = worker.reverseGeocode(location);
+            updateStatus("Reverse Geocode");
 
             // Write the location and address out to a file
             String fileName = "ResponsiveUx.out";
             worker.save(location, address, fileName);
+            updateStatus("Done");
             LogHelper.LogThreadId(logName, "ExtendedLifeCycleStopMechanismService Service - ServiceRunnable Class : Completed");
 
             // Stop the service if there are no more tasks to process after this one
@@ -81,6 +91,24 @@ public class ExtendedLifeCycleStopMechanismService extends Service {
             DelayedStopService delayedStopService = new DelayedStopService(extendedLifeCycleStopMechanismService, _startId);
             extendedLifeCycleStopMechanismService.scheduledExecutorService.schedule(delayedStopService, 10, TimeUnit.SECONDS);
         }
+
+        private void setUpHandler() {
+            Looper looper = extendedLifeCycleStopMechanismService.getMainLooper();
+            LogHelper.LogThreadId(logName, "ExtendedLifeCycleStopMechanismService Service - Looper : " + looper);
+            handler = new Handler(looper);
+        }
+
+        private void updateStatus(String message) {
+            statusMessage = message;
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    LogHelper.LogThreadId(logName, "ExtendedLifeCycleStopMechanismService Service - handler : " + handler);
+                    Toast.makeText(extendedLifeCycleStopMechanismService, statusMessage, Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
     }
 
     class DelayedStopService implements Runnable {
