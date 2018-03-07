@@ -62,6 +62,10 @@ public class ActivityMain extends AppCompatActivity {
                 generateActivityOnClassType(ActivityDoWork.class);
                 break;
             }
+            case R.id.menuVolley: {
+                generateActivityOnClassType(ActivityVolley.class);
+                break;
+            }
             case R.id.menuExit: {
                 onClickExit(item);
                 break;

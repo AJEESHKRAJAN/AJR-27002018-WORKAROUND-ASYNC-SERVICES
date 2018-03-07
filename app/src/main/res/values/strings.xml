@@ -11,4 +11,10 @@
     <string name="do_work_extended_life_cycle_thread_service">Do Work - Extended Life Cycle Thread Service</string>
     <string name="stopmechanism">Do Work - Extended LC Stop Mechanism</string>
     <string name="do_work_extended_lc_fore_grd_service">Do Work - Extended LC Fore-GRD Service</string>
+    <string name="access_web_json_volley">Access web JSON - Volley</string>
+    <string name="title_activity_volley">ActivityVolley</string>
+    <string name="android_now_to_work_with_volley">Android - Now to work with volley</string>
+    <string name="volley_google_location_detection">Volley - Google Location Detection</string>
+    <string name="volley_simple_service">Volley - Simple Service</string>
+    <string name="this_is_a_simple_call_to_volley">This is a simple call to volley</string>
 </resources>
