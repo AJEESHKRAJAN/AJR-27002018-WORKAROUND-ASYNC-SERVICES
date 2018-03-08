@@ -66,6 +66,10 @@ public class ActivityMain extends AppCompatActivity {
                 generateActivityOnClassType(ActivityVolley.class);
                 break;
             }
+            case R.id.menuAccessLocationGoogle: {
+                generateActivityOnClassType(ActivityHomeLocation.class);
+                break;
+            }
             case R.id.menuExit: {
                 onClickExit(item);
                 break;

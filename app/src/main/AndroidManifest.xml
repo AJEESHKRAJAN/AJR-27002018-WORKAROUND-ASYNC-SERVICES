@@ -58,7 +58,8 @@
         <activity
             android:name=".ActivityVolley"
             android:label="@string/title_activity_volley"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActivityHomeLocation"></activity>
     </application>
 
 </manifest>

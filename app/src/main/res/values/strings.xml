@@ -14,7 +14,8 @@
     <string name="access_web_json_volley">Access web JSON - Volley</string>
     <string name="title_activity_volley">ActivityVolley</string>
     <string name="android_now_to_work_with_volley">Android - Now to work with volley</string>
-    <string name="volley_google_location_detection">Volley - Google Location Detection</string>
+    <string name="volley_google_location_detection">Volley - Google - My Location Detection</string>
     <string name="volley_simple_service">Volley - Simple Service</string>
     <string name="this_is_a_simple_call_to_volley">This is a simple call to volley</string>
+    <string name="this_shows_the_address_based_on_latitude_and_longitude_of_my_home_location">This shows the address based on latitude and longitude of my home location</string>
 </resources>

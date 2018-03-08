@@ -9,7 +9,9 @@
         android:id="@+id/menuVolley"
         android:title="@string/access_web_json_volley" />
     <item
+        android:id="@+id/menuAccessLocationGoogle"
+        android:title="@string/volley_google_location_detection" />
+    <item
         android:id="@+id/menuExit"
         android:title="@string/exit" />
-
 </menu>

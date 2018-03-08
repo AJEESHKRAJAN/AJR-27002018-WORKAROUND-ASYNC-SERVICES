@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.workaround.ajeesh.ajr_27002018_workaround_async_services.ActivityHomeLocation">
+
+    <TextView
+        android:id="@+id/textShowAddress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/this_shows_the_address_based_on_latitude_and_longitude_of_my_home_location"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+</android.support.constraint.ConstraintLayout>
