@@ -12,6 +12,12 @@
         android:id="@+id/menuAccessLocationGoogle"
         android:title="@string/volley_google_location_detection" />
     <item
+        android:id="@+id/menuAccessLocationGoogleCache"
+        android:title="@string/volley_google_cache" />
+    <item
+        android:id="@+id/menuAccessLocationGoogleSingletonCache"
+        android:title="@string/volley_google_singleton_cache" />
+    <item
         android:id="@+id/menuExit"
         android:title="@string/exit" />
 </menu>

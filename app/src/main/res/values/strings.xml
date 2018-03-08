@@ -18,4 +18,6 @@
     <string name="volley_simple_service">Volley - Simple Service</string>
     <string name="this_is_a_simple_call_to_volley">This is a simple call to volley</string>
     <string name="this_shows_the_address_based_on_latitude_and_longitude_of_my_home_location">This shows the address based on latitude and longitude of my home location</string>
+    <string name="volley_google_cache">Volley - Google - Cache</string>
+    <string name="volley_google_singleton_cache">Volley - Google - Singleton Cache</string>
 </resources>
